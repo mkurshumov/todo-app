@@ -1,5 +1,7 @@
 # todo-app
 
+![Todo-App-screenshot](public/todo-app-homescreen.png)
+
 ## Setup
 
 Installing dependencies & devDependencies
