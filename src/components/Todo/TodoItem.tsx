@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from "react";
-import { defaultTodo, IconType, Todo, TodoItemProps } from "../../common/types";
+import { IconType, Todo, TodoItemProps } from "../../common/types";
 import { Icon } from "../Icon";
 
 export const TodoItem = ({ todo, todos, setTodos }: TodoItemProps) => {
-  const [editTodo, setEditTodo] = useState<Todo>(defaultTodo);
+  const [editTodo, setEditTodo] = useState<Todo>(todo);
 
   let newTodos = [];
 
