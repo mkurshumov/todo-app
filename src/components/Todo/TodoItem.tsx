@@ -63,7 +63,7 @@ export const TodoItem = ({
             <div className="p-2">
               <button
                 type="button"
-                onClick={() => toggleEdit(todo)}
+                onClick={() => toggleEdit(todo.id)}
                 title="edit"
                 className="mr-1"
               >
