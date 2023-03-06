@@ -111,7 +111,7 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
         </button>
       </div>
 
-      <ul className="w-[350px] overflow-auto py-2 px-4">
+      <ul className="w-[350px] overflow-auto py-2 px-4 sm:w-[500px]">
         {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}

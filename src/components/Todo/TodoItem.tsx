@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { IconType, Todo, TodoItemProps } from "../../common/types";
 import { Icon } from "../Icon";
 
@@ -15,6 +15,11 @@ export const TodoItem = ({
     setEditTodo({ ...editTodo, description: e.target.value });
   };
 
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Enter") saveEdit(todo, editTodo);
+    if (e.key === "Escape") toggleEdit();
+  };
+
   return (
     <>
       <li className="mb-1 flex items-center justify-between rounded-md bg-white/30 hover:bg-white/10">
@@ -26,6 +31,7 @@ export const TodoItem = ({
               className="my-2 ml-2 flex-1 rounded-md py-1 pl-[25px] pr-2"
               value={editTodo.description}
               onChange={updateEditTodo}
+              onKeyDown={handleKeyDown}
             />
 
             <div className="p-2">

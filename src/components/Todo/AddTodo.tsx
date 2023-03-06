@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { defaultTodo, Todo, TodoProps } from "../../common/types";
 
 export const AddTodo = ({ todos, setTodos }: TodoProps) => {
@@ -21,6 +21,10 @@ export const AddTodo = ({ todos, setTodos }: TodoProps) => {
     setNewTodo({ ...newTodo, description: e.target.value });
   };
 
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Enter") addTodo();
+  };
+
   return (
     <>
       <div className="mb-4 flex w-80">
@@ -30,6 +34,7 @@ export const AddTodo = ({ todos, setTodos }: TodoProps) => {
           className="mr-3 flex-1 rounded-md p-1 px-3"
           value={newTodo.description}
           onChange={updateNewTodo}
+          onKeyDown={handleKeyDown}
         />
         <button
           type="button"
