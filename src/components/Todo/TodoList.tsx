@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { Todo, TodoProps } from "../../common/types";
+import { IconType, Todo, TodoProps } from "../../common/types";
+import { Icon } from "../Icon";
 import { TodoItem } from "./TodoItem";
 
 enum FilterType {
@@ -128,6 +129,19 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
           Done ({doneTodosCount})
         </button>
       </div>
+
+      {todos.length > 0 && (
+        <div className="flex w-80 justify-end pt-2 text-white">
+          <button
+            type="button"
+            title="remove all"
+            onClick={() => setTodos([])}
+            className="flex rounded-md border p-1 px-2 text-white hover:bg-purple-700"
+          >
+            <Icon type={IconType.remove} className="h-5 w-5 stroke-white" /> all
+          </button>
+        </div>
+      )}
 
       <ul className="w-[350px] overflow-auto py-2 px-4 sm:w-[500px]">
         {filteredTodos.map((todo) => (
