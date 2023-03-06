@@ -27,6 +27,7 @@ export const TodoItem = ({
         {todo.edit ? (
           <>
             <input
+              autoFocus
               type="text"
               placeholder="Todo description"
               className="my-2 ml-2 flex-1 rounded-md py-1 pl-[25px] pr-2"
