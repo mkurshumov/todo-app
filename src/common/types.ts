@@ -30,6 +30,7 @@ export enum IconType {
   remove,
   save,
   cancel,
+  add,
 }
 
 export interface IconProps {
