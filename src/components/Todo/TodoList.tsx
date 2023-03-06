@@ -50,7 +50,7 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
     setTodos(todos.filter((todo: Todo) => todo.id !== id));
   };
 
-  const toggleTodo = (isChecked: boolean, id: string) => {
+  const toggleTodo = (id: string, isChecked: boolean) => {
     newTodos = todos.map((todo: Todo) => {
       if (todo.id === id) todo.done = isChecked;
 
@@ -60,7 +60,7 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
     setTodos(newTodos);
   };
 
-  const toggleEdit = (setEditTodo: any, id?: string) => {
+  const toggleEdit = (id?: string, setEditTodo?: any) => {
     newTodos = todos.map((t: Todo) => {
       //close all
       t.edit = false;
@@ -76,6 +76,13 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
     });
 
     setTodos(newTodos);
+  };
+
+  const todoItemProps = {
+    saveEdit,
+    removeTodo,
+    toggleTodo,
+    toggleEdit,
   };
 
   return (
@@ -115,14 +122,7 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
 
       <ul className="w-[350px] overflow-auto py-2 px-4 sm:w-[500px]">
         {filteredTodos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            saveEdit={saveEdit}
-            removeTodo={removeTodo}
-            toggleTodo={toggleTodo}
-            toggleEdit={toggleEdit}
-          />
+          <TodoItem key={todo.id} todo={todo} {...todoItemProps} />
         ))}
       </ul>
     </>

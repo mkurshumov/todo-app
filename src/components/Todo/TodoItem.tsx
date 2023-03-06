@@ -45,11 +45,7 @@ export const TodoItem = ({
               >
                 <Icon type={IconType.save} />
               </button>
-              <button
-                type="button"
-                onClick={() => toggleEdit(setEditTodo)}
-                title="cancel"
-              >
+              <button type="button" onClick={toggleEdit} title="cancel">
                 <Icon type={IconType.cancel} />
               </button>
             </div>
@@ -67,7 +63,7 @@ export const TodoItem = ({
                 type="checkbox"
                 name="todo"
                 checked={todo.done}
-                onChange={(e) => toggleTodo(e.target.checked, todo.id)}
+                onChange={(e) => toggleTodo(todo.id, e.target.checked)}
               />
               {todo.description}
             </label>
@@ -75,7 +71,7 @@ export const TodoItem = ({
             <div className="p-2">
               <button
                 type="button"
-                onClick={() => toggleEdit(setEditTodo, todo.id)}
+                onClick={() => toggleEdit(todo.id, setEditTodo)}
                 title="edit"
                 className="mr-1"
               >
