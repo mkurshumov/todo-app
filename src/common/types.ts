@@ -37,3 +37,8 @@ export interface IconProps {
   className?: string;
   strokeWidth?: number;
 }
+
+export enum KeyType {
+  Enter = "Enter",
+  Escape = "Escape",
+}

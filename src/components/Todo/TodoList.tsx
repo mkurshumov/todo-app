@@ -60,7 +60,7 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
     setTodos(newTodos);
   };
 
-  const toggleEdit = (id?: string) => {
+  const toggleEdit = (updateEditTodo: any, id?: string) => {
     newTodos = todos.map((t: Todo) => {
       //close all
       t.edit = false;
@@ -68,6 +68,8 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
       if (id && id === t.id) {
         //open edit
         t.edit = true;
+
+        updateEditTodo(t);
       }
 
       return t;

@@ -1,6 +1,7 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
-import { IconType, Todo, TodoItemProps } from "../../common/types";
+import { IconType, KeyType, Todo, TodoItemProps } from "../../common/types";
 import { Icon } from "../Icon";
+import { onKeyDown } from "../../utils/utils";
 
 export const TodoItem = ({
   todo,
@@ -16,8 +17,8 @@ export const TodoItem = ({
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Enter") saveEdit(todo, editTodo);
-    if (e.key === "Escape") toggleEdit();
+    onKeyDown(e.key, KeyType.Enter, saveEdit, todo, editTodo);
+    onKeyDown(e.key, KeyType.Escape, toggleEdit);
   };
 
   return (
@@ -43,7 +44,11 @@ export const TodoItem = ({
               >
                 <Icon type={IconType.save} />
               </button>
-              <button type="button" onClick={() => toggleEdit()} title="cancel">
+              <button
+                type="button"
+                onClick={() => toggleEdit(setEditTodo)}
+                title="cancel"
+              >
                 <Icon type={IconType.cancel} />
               </button>
             </div>
@@ -69,7 +74,7 @@ export const TodoItem = ({
             <div className="p-2">
               <button
                 type="button"
-                onClick={() => toggleEdit(todo.id)}
+                onClick={() => toggleEdit(setEditTodo, todo.id)}
                 title="edit"
                 className="mr-1"
               >

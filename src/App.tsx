@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Todo, TodoProps } from "./common/types";
 import { Card, AddTodo, TodoList } from "./components";
-import { getSavedTodos } from "./utils/localStorage";
+import { getSavedTodos } from "./utils/utils";
 
 const App = () => {
   const savedTodos = getSavedTodos();

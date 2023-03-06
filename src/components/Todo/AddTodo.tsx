@@ -1,5 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
-import { defaultTodo, Todo, TodoProps } from "../../common/types";
+import { defaultTodo, KeyType, Todo, TodoProps } from "../../common/types";
+import { onKeyDown } from "../../utils/utils";
 
 export const AddTodo = ({ todos, setTodos }: TodoProps) => {
   const [newTodo, setNewTodo] = useState<Todo>(defaultTodo);
@@ -22,7 +23,7 @@ export const AddTodo = ({ todos, setTodos }: TodoProps) => {
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Enter") addTodo();
+    onKeyDown(e.key, KeyType.Enter, addTodo);
   };
 
   return (

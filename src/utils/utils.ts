@@ -1,4 +1,4 @@
-import { Todo } from "../common/types";
+import { KeyType, Todo } from "../common/types";
 
 const getSavedTodos = (): Todo[] => {
   const savedTodosString = localStorage.getItem("todos");
@@ -12,4 +12,13 @@ const getSavedTodos = (): Todo[] => {
   return [];
 };
 
-export { getSavedTodos };
+const onKeyDown = (
+  key: string,
+  keyType: KeyType,
+  callback: any,
+  ...args: any
+) => {
+  if (key === keyType) callback(...args);
+};
+
+export { getSavedTodos, onKeyDown };
