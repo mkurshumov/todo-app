@@ -131,7 +131,7 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
       </div>
 
       {todos.length > 0 && (
-        <div className="flex w-80 justify-end pt-2 text-white">
+        <div className="flex w-80 justify-end py-2 text-white">
           <button
             type="button"
             title="remove all"
@@ -143,7 +143,7 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
         </div>
       )}
 
-      <ul className="w-[350px] overflow-auto py-2 px-4 sm:w-[500px]">
+      <ul className="w-[350px] overflow-auto px-4 sm:w-[500px]">
         {filteredTodos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} {...todoItemProps} />
         ))}
