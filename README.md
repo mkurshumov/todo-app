@@ -4,6 +4,9 @@
 
 Todo app with persistent storage via browser built-in local storage with React
 
+- add todo / save edit todo - Enter key
+- cancel edit todo - Escape key
+
 ## Setup
 
 Installing dependencies & devDependencies
