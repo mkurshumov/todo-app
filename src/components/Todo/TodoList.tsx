@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Todo, TodoProps } from "../../common/types";
 import { TodoItem } from "./TodoItem";
 
@@ -24,10 +24,19 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
     }
   };
 
-  const filteredTodos = getFilteredTodos(todos, filter);
-
-  const todoTodosCount = getFilteredTodos(todos, FilterType.todo).length;
-  const doneTodosCount = getFilteredTodos(todos, FilterType.done).length;
+  //cache filtered todos until todos or filter changes
+  const filteredTodos = useMemo(
+    () => getFilteredTodos(todos, filter),
+    [todos, filter]
+  );
+  const todoTodosCount = useMemo(
+    () => getFilteredTodos(todos, FilterType.todo).length,
+    [todos, filter]
+  );
+  const doneTodosCount = useMemo(
+    () => getFilteredTodos(todos, FilterType.done).length,
+    [todos, filter]
+  );
 
   let newTodos = [];
 
