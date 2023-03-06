@@ -2,60 +2,17 @@ import { ChangeEvent, useState } from "react";
 import { IconType, Todo, TodoItemProps } from "../../common/types";
 import { Icon } from "../Icon";
 
-export const TodoItem = ({ todo, todos, setTodos }: TodoItemProps) => {
+export const TodoItem = ({
+  todo,
+  saveEdit,
+  removeTodo,
+  toggleTodo,
+  toggleEdit,
+}: TodoItemProps) => {
   const [editTodo, setEditTodo] = useState<Todo>(todo);
-
-  let newTodos = [];
-
-  const removeTodo = (id: string) => {
-    setTodos(todos.filter((todo: Todo) => todo.id !== id));
-  };
-
-  const toggleTodo = (isChecked: boolean, id: string) => {
-    newTodos = todos.map((todo: Todo) => {
-      if (todo.id === id) todo.done = isChecked;
-
-      return todo;
-    });
-
-    setTodos(newTodos);
-  };
-
-  const toggleEdit = (todo?: Todo) => {
-    newTodos = todos.map((t: Todo) => {
-      //close all
-      t.edit = false;
-
-      if (todo && todo.id === t.id) {
-        //open edit
-        t.edit = true;
-        //save edit todo
-        setEditTodo(t);
-      }
-
-      return t;
-    });
-
-    setTodos(newTodos);
-  };
 
   const updateEditTodo = (e: ChangeEvent<HTMLInputElement>) => {
     setEditTodo({ ...editTodo, description: e.target.value });
-  };
-
-  const saveEdit = (todo: Todo) => {
-    newTodos = todos.map((t: Todo) => {
-      if (todo.edit && todo.id === t.id) {
-        t = { ...editTodo };
-      }
-
-      // close all
-      t.edit = false;
-
-      return t;
-    });
-
-    setTodos(newTodos);
   };
 
   return (
@@ -73,13 +30,14 @@ export const TodoItem = ({ todo, todos, setTodos }: TodoItemProps) => {
 
             <div className="p-2">
               <button
-                onClick={() => saveEdit(todo)}
+                type="button"
+                onClick={() => saveEdit(todo, editTodo)}
                 title="save"
                 className="mr-1"
               >
                 <Icon type={IconType.save} />
               </button>
-              <button onClick={() => toggleEdit()} title="cancel">
+              <button type="button" onClick={() => toggleEdit()} title="cancel">
                 <Icon type={IconType.cancel} />
               </button>
             </div>
@@ -104,13 +62,18 @@ export const TodoItem = ({ todo, todos, setTodos }: TodoItemProps) => {
 
             <div className="p-2">
               <button
+                type="button"
                 onClick={() => toggleEdit(todo)}
                 title="edit"
                 className="mr-1"
               >
                 <Icon type={IconType.edit} />
               </button>
-              <button onClick={() => removeTodo(todo.id)} title="remove">
+              <button
+                type="button"
+                onClick={() => removeTodo(todo.id)}
+                title="remove"
+              >
                 <Icon type={IconType.remove} />
               </button>
             </div>

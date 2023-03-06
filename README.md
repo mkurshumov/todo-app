@@ -2,6 +2,8 @@
 
 ![Todo-App-screenshot](public/todo-app-homescreen.png)
 
+Todo app with persistent storage via browser built-in local storage with React
+
 ## Setup
 
 Installing dependencies & devDependencies

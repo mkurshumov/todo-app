@@ -17,8 +17,12 @@ export interface TodoProps {
   setTodos: any;
 }
 
-export interface TodoItemProps extends TodoProps {
+export interface TodoItemProps {
   todo: Todo;
+  saveEdit: any;
+  removeTodo: any;
+  toggleTodo: any;
+  toggleEdit: any;
 }
 
 export enum IconType {

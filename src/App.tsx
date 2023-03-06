@@ -3,7 +3,7 @@ import { Todo, TodoProps } from "./common/types";
 import { Card, AddTodo, TodoList } from "./components";
 import { getSavedTodos } from "./utils/localStorage";
 
-export default function App() {
+const App = () => {
   const savedTodos = getSavedTodos();
   const [todos, setTodos] = useState<Todo[]>(savedTodos);
 
@@ -28,4 +28,6 @@ export default function App() {
       </div>
     </>
   );
-}
+};
+
+export default App;

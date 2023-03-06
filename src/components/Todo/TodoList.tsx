@@ -29,6 +29,53 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
   const todoTodosCount = getFilteredTodos(todos, FilterType.todo).length;
   const doneTodosCount = getFilteredTodos(todos, FilterType.done).length;
 
+  let newTodos = [];
+
+  const saveEdit = (todo: Todo, editTodo: Todo) => {
+    newTodos = todos.map((t: Todo) => {
+      if (todo.edit && todo.id === t.id) {
+        t = { ...editTodo };
+      }
+
+      // close all
+      t.edit = false;
+
+      return t;
+    });
+
+    setTodos(newTodos);
+  };
+
+  const removeTodo = (id: string) => {
+    setTodos(todos.filter((todo: Todo) => todo.id !== id));
+  };
+
+  const toggleTodo = (isChecked: boolean, id: string) => {
+    newTodos = todos.map((todo: Todo) => {
+      if (todo.id === id) todo.done = isChecked;
+
+      return todo;
+    });
+
+    setTodos(newTodos);
+  };
+
+  const toggleEdit = (todo?: Todo) => {
+    newTodos = todos.map((t: Todo) => {
+      //close all
+      t.edit = false;
+
+      if (todo && todo.id === t.id) {
+        //open edit
+        t.edit = true;
+      }
+
+      return t;
+    });
+
+    setTodos(newTodos);
+  };
+
   return (
     <>
       <div className="flex w-80">
@@ -69,8 +116,10 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
           <TodoItem
             key={todo.id}
             todo={todo}
-            todos={todos}
-            setTodos={setTodos}
+            saveEdit={saveEdit}
+            removeTodo={removeTodo}
+            toggleTodo={toggleTodo}
+            toggleEdit={toggleEdit}
           />
         ))}
       </ul>
