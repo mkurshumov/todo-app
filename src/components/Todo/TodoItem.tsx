@@ -27,10 +27,11 @@ export const TodoItem = ({
         {todo.edit ? (
           <>
             <input
+              required
               autoFocus
               type="text"
               placeholder="Todo description"
-              className="my-2 ml-2 flex-1 rounded-md py-1 pl-[25px] pr-2"
+              className="my-2 ml-2 flex-1 rounded-md py-1 pl-[25px] pr-2 outline-none ring-inset valid:ring-2 valid:ring-green-500 invalid:ring-2 invalid:ring-pink-500"
               value={editTodo.description}
               onChange={updateEditTodo}
               onKeyDown={handleKeyDown}
@@ -38,12 +39,19 @@ export const TodoItem = ({
 
             <div className="p-2">
               <button
+                disabled={!editTodo.description}
                 type="button"
                 onClick={() => saveEdit(todo, editTodo)}
                 title="save"
-                className="mr-1"
+                className="mr-1 disabled:cursor-not-allowed"
               >
-                <Icon type={IconType.save} />
+                <Icon
+                  type={IconType.save}
+                  className={
+                    "h-4 w-4 stroke-white " +
+                    (editTodo.description ? "hover:stroke-slate-700" : "")
+                  }
+                />
               </button>
               <button type="button" onClick={toggleEdit} title="cancel">
                 <Icon type={IconType.cancel} />

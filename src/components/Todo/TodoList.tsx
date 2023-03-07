@@ -42,18 +42,20 @@ export const TodoList = ({ todos, setTodos }: TodoProps) => {
   let newTodos = [];
 
   const saveEdit = (todo: Todo, editTodo: Todo) => {
-    newTodos = todos.map((t: Todo) => {
-      if (todo.edit && todo.id === t.id) {
-        t = { ...editTodo };
-      }
+    if (editTodo.description) {
+      newTodos = todos.map((t: Todo) => {
+        if (todo.edit && todo.id === t.id) {
+          t = { ...editTodo };
+        }
 
-      // close all
-      t.edit = false;
+        // close all
+        t.edit = false;
 
-      return t;
-    });
+        return t;
+      });
 
-    setTodos(newTodos);
+      setTodos(newTodos);
+    }
   };
 
   const removeTodo = (id: string) => {

@@ -49,7 +49,7 @@ export const AddTodo = ({ todos, setTodos }: TodoProps) => {
           type="button"
           onClick={addTodo}
           disabled={!newTodo.description}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-600 text-white enabled:hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-75 "
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-600 text-white enabled:hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-75"
         >
           <Icon
             type={IconType.add}
