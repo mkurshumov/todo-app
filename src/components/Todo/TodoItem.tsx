@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
-import { IconType, KeyType, Todo, TodoItemProps } from "../../common/types";
+import { IconType, KeyType, Todo, TodoItemProps } from "../../types";
 import { Icon } from "../Icon";
 import { onKeyDown } from "../../utils/utils";
 

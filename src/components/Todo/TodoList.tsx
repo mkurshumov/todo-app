@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { IconType, Todo, TodoProps } from "../../common/types";
+import { IconType, Todo, TodoProps } from "../../types";
 import { Icon } from "../Icon";
 import { TodoItem } from "./TodoItem";
 

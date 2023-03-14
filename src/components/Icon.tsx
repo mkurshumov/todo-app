@@ -1,4 +1,4 @@
-import { IconProps, IconType } from "../common/types";
+import { IconProps, IconType } from "../types";
 
 export const Icon = ({
   type,

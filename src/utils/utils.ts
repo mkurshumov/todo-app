@@ -1,4 +1,4 @@
-import { KeyType, Todo } from "../common/types";
+import { KeyType, Todo } from "../types";
 
 const getSavedTodos = (): Todo[] => {
   const savedTodosString = localStorage.getItem("todos");
