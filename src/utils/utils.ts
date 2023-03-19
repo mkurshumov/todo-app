@@ -1,15 +1,20 @@
 import { KeyType, Todo } from "../types";
 
 const getSavedTodos = (): Todo[] => {
+  let savedTodos: Todo[] = [];
+
   const savedTodosString = localStorage.getItem("todos");
 
   if (savedTodosString) {
-    const savedTodosJSON = JSON.parse(savedTodosString) as Todo[];
-
-    if (savedTodosJSON) return savedTodosJSON;
+    try {
+      savedTodos = JSON.parse(savedTodosString) as Todo[];
+    } catch (error) {
+      console.error("Corrupted data format in storage");
+      localStorage.removeItem("todos");
+    }
   }
 
-  return [];
+  return savedTodos;
 };
 
 const onKeyDown = (
